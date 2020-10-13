@@ -1,0 +1,32 @@
+{
+  "name": "cucumber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor config/conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronaldokarmo/protractor/xxx.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ronaldokarmo/protractor/issues"
+  },
+  "homepage": "https://github.com/ronaldokarmo/protractor",
+  "devDependencies": {
+    "babel-register": "6.26.0",
+    "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
+    "cucumber": "6.0.5",
+    "cucumber-html-report": "0.6.5",
+    "cucumber-html-reporter": "5.2.0",
+    "cucumberjs-allure-reporter": "1.0.3",
+    "mkdirp": "1.0.4",
+    "protractor": "7.0.0",
+    "protractor-cucumber-framework": "6.2.1"
+  }
+}

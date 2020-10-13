@@ -1,0 +1,37 @@
+const assert = require('assert');
+const { Given, When, Then, BeforeAll } = require('cucumber');
+const { browser } = require('protractor');
+
+function isItFriday(today) {
+    if (today === "Friday") {
+        return "TGIF";
+    } else {
+        return "Nope";
+    }
+}
+
+BeforeAll('', function () {
+    let token = "eyJhbGciOiJQQkVTMi1IUzI1NitBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjpudWxsLCJjdHkiOiJKV1QiLCJwMmMiOjgxOTIsInAycyI6InFLVllPd2kwaGtpNjJ3TXoifQ.JgT5ARlMMZEKnINGzf-eXBsuiA7kTXUnEHKPopioh5ZIK-QCaI8lQA.UjViPzAFD8rYjz4a4HmuQQ.duu0kBeqyoQj_OLEib_cg2iWDeSimMqY9DKsW0bVr4YlCEMXlIfJ_dmMtqkrTxoR54f8DXyuuU3QPJCOQ_9F2u_am1SSe4bFFseW9TrftrOnvpvOifWraKj4YYjJ7k6OMD-u-aSQKqdH7XstucpRGEsqscD7g7-jL5-xfPOXFkbCe9Pj8Ef8Obckz8_B7Of5c-AX2UR22DDqJJ8f-Qp9D6IfxbpQPA_klndiTtqMl5omojDqvf1RZjackLe4oHjuMyHrh_IA74w84UKPFZMlu8x7f5Ra26GiSCISw9UT7WMa9TSxKJ5xhzah4H_UNS2Yy3dV6ylbecjjzR3EJQnyRwBeGR5-Lxg_Sq10pKszHFT8gZWdvvSoyYlrbLw9d2MScTY5-bm43wC6CjAeCcSwz9gImTo7P7_mM9LvZBBHUCM2cTHy_H9EDTeT7DBIKXBoAruwERZAHfnochgNfSc_3fccsjMXhni2iJwyqWNGa7u7yt44FXeYuRWx4DgZhAtfrihy8Nqk-eybLG-UYOB4klE71fffXwBtZSWv4pBjjNXMbGy77VxzJ-u9AQLJKmc4BtQZKKYLZyxKMbVFnm-y1zIQivkk4v41qXpm-zAQ8krkZT8S4vGgrwiTjN419VjBxfkZnnhW_siKNydjsKiby9rpMBZLmJs911KqqIQfqHwO6Z14iz-u0KhreELj1MSJkSkc0VdaA-zFf5RfZZg0nV3poavamkbDD8y-GQ0iHpMIFLNRvn0nyYT3lHfgnF6ta74OTWr0Rk40ZtvTMro5wSXoMH0hnTfozrdt1pv3dYB2b-HjmpaUjuj72Xe-Jrgq5MXp5y_xEJaak1Z-P8kSSfB6tQDB1hJVDU1p20qmEQgWHyeO8llcf0P2oC8lSgeYhv3cCrMqcL9GWkavc0cTarkE43x8Jsw0DBA35Z_a6xmhk0Ny0vftJTTtNNlila37ovzeoFBfGMYgkECcJxNszq3VeAFbu6QAGrvqvoxKi_qs5F16GR4H9OIojGtwpwcl27PMETan4ivfvMAwPeO-PI5HW26qC6820jmNeaCvAqyubt8QcAUZlGM3HglRHn8VT60vZ7Xf0lOy3sBVwIfTlU1Uemk8V3b8x9rHWkdzELy8HhytEs_9CAgKF905Y92aZQjfVn0wJ2bAENSaQmy3FqOb4MiyIBp8eJlbOwOsj4QH02M4VWy5YcPFTLrdmxsOYTT_BXWu2Jck75b0-YAK-A_U_XbE6_BLJmIKwME6QStjiR-gQr4JTubAlPOzhi0cLMtM-eEx4QuBu1eP8TA8a3uSXWqbv5KMG9Q9p2pWM0T8jbv5yDg4u-DFatBA6wATzN3NzpxLvblTR8g39WYbA2UHb4yx7QTb4DkCyRFxwtkEeiIv8o4fUZq4QoFGeI3UZbYuKybYIRbpIZpU7CAcfdZxqPLUzq7bugDoiqX1nhwPS6rjZJ0yMDINjYt-786kirnEi3ulqxUcJQVztnSC9RaBJJzgS2BAD2oSLpFoarzjMR_RR-UIuTTsGHHNXjowk8O2xmjxrZH2cPyq9IuN15JCdHaWUk6l6JyW_b_4-7A4lAT1AmNBqmkJibSJ_6gw0swut7-DReRA10ELsTHGaJHwdIHzDqyfPGQwLJDoMYW9Gq_hTnz0T36lVEoL6kEhByr8tv9PUcFyblQNDrpCIX8NG_zRJwtgAjaDr7tWIwie699SVscgHChNQjAbphg9J_Ho31aDWIZySeUcMKMf3Km7XKtFGdACHF9qqqNkxrXzpRd4Lg_rRbHVStnZVWoWZCoT1G2Vp9QUNztRiwvq64VL5DbPveCDiCFtNK79jxIdMLF_ZKRKvgjk3krVJbhpov8YmrB2vkP8JU22WNzrgJLGwphjEshXr0DgUcDDTun8KktcjuN5t5tImKy4S_cQ4ycq5iNsCOvNDgyVH5OZ9YEYOkKBglm-FBVQgpA6_DtYyezmVPdfu_4C_H21_1l4tH4lCwFF3dDqZYZzVpLst9hH-D0dGA_cmeXmWekRDlLbICBhQpYfVhT2hCD5aP88J1DD0giWEKqP3q864lI96rd1zgWRUTBrF2izmYc7CcYA_4coDAhdGi_9JfQbA82Az0U6CEzsZjvQpD-LWObFVFgyyNuaAVIRGBjo96c_Gsfzxf3GmwzBjy-t6AM_2nUCqVZjqelO4ZEOYFi27Oz4spHMcjmNl6I4p9236wHLCl9dI81-OGRP2TaC9uELWE6PTjacYHvQGZzhvE5oMJQYS-BQiWimp8JKu9IiFjSOWuxKfUV_8YAlNpCCrJIlmMbhlSoqST1gnVKShEkus61nGd0OxePzT6eJz24Mob4n1KzELhXSXXx-XvrRhtGghgxzRwrwrdL8hdhDve245vaNEn4jdbsvDtQ7rq0qH4eXU2rHOw-Q3nOS8vheGZaTau_irLEpJ64V839WTp-SjzUDjV2OJeoyitDv43SWhzJzqkW255HUAcoGmd4vVsmMAUaaZvwylEnSYhd5ZyDLi8sFnAlXZNTvs5MkXEZXwVnCf-hvnCdzVNLsbDxsNM1GRtDf0oJBm7_aAqjaUXjbV8L5_98g2rysOyzYz58wkA4XI-jT9yTKv79GyH0O_q7PxWD9rlnZ1NQfWk8lhtIPpqMkYT_IohsaKEQejnrvfToz1Q6WUPwueMv0eO-AEfsSgBw_qtpT6zkZ0obD95C4D5CN0-pZWiIiULj7IQn_UazkdoE-WpuRksUGjr1Qiz1S8EmzB-420ygJtbJLQwRnxv4ysn-cal0zNQo9jcafBqZCfV9mIBLcOcgeus2kcZiBtwpasJLp-n7oZeMwPdQoC98bIXxPy-fz0z1NIiyWqn9-KJcnvnBRe27yYOiTkmPt8467tfIsRNmFz05DC65Xrwnv6Jz_1qs0gUav0aGh5lF05vpXDnyspTb2daNc96UdDxVYbB2e9ZoqQft4USS0gPLZi-o00IVl8TsVcxkZD8NnKafvV0LEKUImXYwaM-e5-l-1.tpNyW8K6LljUIUHtmlemTg";
+    console.log("Esta aqui o Before");
+    browser.get("https://digitaldev.hdevelo.com.br/site-md-farol/login".concat(token));
+});
+
+Given('today is Sunday', function () {
+    this.today = 'Sunday';
+});
+
+Given('today is Friday', function () {
+    this.today = 'Friday';
+});
+
+Given('today is {string}', function (givenDay) {
+    this.today = givenDay;
+});
+
+When('I ask whether it\'s Friday yet', function () {
+    this.actualAnswer = isItFriday(this.today);
+});
+
+Then('I should be told {string}', function (expectedAnswer) {
+    assert.equal(this.actualAnswer, expectedAnswer);
+});

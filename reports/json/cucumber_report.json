@@ -1,0 +1,72 @@
+[
+  {
+    "description": "  Quero acessar o Serviço Cielo Farol\n  Para acompanhar informações sobre os meu negócio e os meus clientes",
+    "keyword": "Feature",
+    "name": "Acesso ao Serviço Cielo Farol",
+    "line": 1,
+    "id": "acesso-ao-serviço-cielo-farol",
+    "tags": [],
+    "uri": "monetizacao\\farol\\features\\farol.feature",
+    "elements": [
+      {
+        "id": "acesso-ao-serviço-cielo-farol;validar-o-acesso-ao-serviço-cielo-farol",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Validar o acesso ao Serviço Cielo Farol",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "que o estabelecimento está logado no portal da Cielo",
+            "match": {
+              "location": "monetizacao\\farol\\stepDefinitions\\farol.steps.js:4"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0,
+              "error_message": "ReferenceError: expect is not defined\n    at World.<anonymous> (C:/Linux/desenv/workspace/cucumber/monetizacao/farol/stepDefinitions/farol.steps.js:5:5)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "acessar o serviço Cielo Farol pela primeira vez após a contratação",
+            "match": {
+              "location": "monetizacao\\farol\\stepDefinitions\\farol.steps.js:8"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "deve ser vizualidada a página Termo de Uso",
+            "match": {
+              "location": "monetizacao\\farol\\stepDefinitions\\farol.steps.js:12"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

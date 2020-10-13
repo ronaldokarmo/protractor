@@ -1,0 +1,21 @@
+const { browser } = require("protractor");
+
+var hooks = function () {
+    // this.Before(function (next) {
+    //     console.log("Before hook!");
+    //     this.foo = "bar";
+    //     next();
+    // });
+
+    this.After(function (scenario, next) {
+        // browser.takeScreenshot().then(function (png) {
+        //     var decodeImage = Buffer.from(png, 'base64').toString('binary');
+        //     scenario.attach(decodeImage, 'image/png');
+        //     next();
+        // }, function (err) {
+        //     next(err);
+        // });
+        console.log("Opa After!");
+    });
+};
+module.exports = hooks;
